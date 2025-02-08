@@ -112,14 +112,15 @@ jobs:
           rm -rf ./common/android/abi_gki_protected_exports_*
             sed -i "/stable_scmversion_cmd/s/-maybe-dirty//g" ./build/kernel/kleaf/impl/stamp.bzl
             tools/bazel build --config=fast //common:kernel_aarch64_dist
+            cp ./bazel-bin/common/kernel_aarch64/Image mnt/kernel_workspace/
             cp ./bazel-bin/common/kernel_aarch64/Image.lz4 $GITHUB_WORKSPACE/kernel_workspace/
 
     - name: Make Anykernel3
       run: |
         cd /mnt/kernel_workspace
         git clone https://github.com/TheWildJames/AnyKernel3.git -b android14-6.1
-        cp $GITHUB_WORKSPACE/kernel_workspace/Image.lz4 AnyKernel3/
-
+         cp $GITHUB_WORKSPACE/kernel_workspace/Image.lz4 AnyKernel3/
+        
     - name: Upload Image
       uses: actions/upload-artifact@v4
       with:

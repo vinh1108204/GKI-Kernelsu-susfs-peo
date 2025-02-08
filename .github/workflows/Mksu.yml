@@ -24,7 +24,7 @@ jobs:
         sudo mkdir -p /mnt/kernel_workspace
         sudo chmod 0777 /mnt/kernel_workspace
         cd /mnt/kernel_workspace
-        git clone https://github.com/guruji_byte/GKI-Kernelsu-susfs --depth=1
+        git clone https://github.com/guruji-byte/GKI-Kernelsu-susfs --depth=1
 
     - name: Download source code
       run: |

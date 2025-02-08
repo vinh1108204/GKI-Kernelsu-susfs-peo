@@ -14,7 +14,7 @@ jobs:
 
     - name: Setup build kernel environment
       run: |
-        echo "BUILD_TIME=$(TZ=Asia/Shanghai date "+%y%m%d")" >> $GITHUB_ENV
+        echo "BUILD_TIME=$(TZ=Asia/Delhi date "+%y%m%d")" >> $GITHUB_ENV
         sudo apt-get update
         sudo apt-get install git dwarves libelf-dev ccache automake flex lzop bison gperf build-essential zip curl zlib1g-dev g++-multilib libxml2-utils bzip2 libbz2-dev libbz2-1.0 libghc-bzlib-dev squashfs-tools pngcrush schedtool dpkg-dev liblz4-tool make optipng maven libssl-dev pwgen libswitch-perl policycoreutils minicom libxml-sax-base-perl libxml-simple-perl bc libc6-dev-i386 lib32ncurses-dev libx11-dev lib32z-dev libgl1-mesa-dev xsltproc unzip device-tree-compiler python3
         curl -so repo https://storage.googleapis.com/git-repo-downloads/repo
@@ -29,12 +29,7 @@ jobs:
     - name: Download source code
       run: |
         cd /mnt/kernel_workspace
-        repo init --depth=1 --u https://android.googlesource.com/kernel/manifest -b common-android14-6.1-lts
-        REMOTE_BRANCH=$(git ls-remote https://android.googlesource.com/kernel/common android14-6.1-lts)
-        DEFAULT_MANIFEST_PATH=.repo/manifests/default.xml
-        if grep -q deprecated <<< $REMOTE_BRANCH; then
-          sed -i "s/\"android14-6.1-lts\"/\"deprecated\/android14-6.1-lts\"/g" $DEFAULT_MANIFEST_PATH
-        fi
+        repo init --depth=1 --u https://android.googlesource.com/kernel/manifest -b common-android14-6.1-2024-06
         repo --trace sync -c -j$(nproc --all) --no-tags --fail-fast
 
     - name: KernelSU / SUSFS / Misc

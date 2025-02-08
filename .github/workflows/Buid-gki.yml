@@ -41,7 +41,7 @@ jobs:
       run: |
         cd /mnt/kernel_workspace
         echo "Add KernelSU"
-        #curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s main
+        curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s main
         echo "Applying SUSFS patches..."
         echo "kernelsu"
         git clone https://gitlab.com/simonpunk/susfs4ksu.git -b gki-android14-6.1

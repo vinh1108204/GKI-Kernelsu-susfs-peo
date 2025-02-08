@@ -24,7 +24,7 @@ jobs:
         sudo mkdir -p /mnt/kernel_workspace
         sudo chmod 0777 /mnt/kernel_workspace
         cd /mnt/kernel_workspace
-        git clone https://github.com/zmyeir/custom-gki --depth=1
+        git clone https://github.com/guruji_byte/GKI-Kernelsu-susfs --depth=1
 
     - name: Download source code
       run: |
@@ -37,12 +37,14 @@ jobs:
         cd /mnt/kernel_workspace
         echo "Add KernelSU"
         curl -LSs "https://raw.githubusercontent.com/5ec1cff/KernelSU/main/kernel/setup.sh" | bash -
-          cd ./KernelSU/
+          cd KernelSU
           KSU_VERSION=$(expr $(/usr/bin/git rev-list --count HEAD) "+" 10200)
           echo "KSUVER=$KSU_VERSION" >> $GITHUB_ENV
           sed -i "s/DKSU_VERSION=16/DKSU_VERSION=${KSU_VERSION}/" kernel/Makefile
           # Reverting commit
           git revert -m 1 36120da -n
+          
+          cd ./mnt/kernel_workspace
         echo "Applying SUSFS patches..."
         git clone https://gitlab.com/simonpunk/susfs4ksu.git -b gki-android14-6.1
         cp /mnt/kernel_workspace/susfs4ksu/kernel_patches/KernelSU/10_enable_susfs_for_ksu.patch /mnt/kernel_workspace/KernelSU/

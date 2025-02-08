@@ -41,8 +41,7 @@ jobs:
       run: |
         cd /mnt/kernel_workspace
         echo "Add KernelSU"
-        #curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
-        curl -LSs "https://raw.githubusercontent.com/backslashxx/KernelSU/magic/kernel/setup.sh" | bash -s magic
+        #curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s main
         echo "Applying SUSFS patches..."
         echo "kernelsu"
         git clone https://gitlab.com/simonpunk/susfs4ksu.git -b gki-android14-6.1
@@ -59,8 +58,6 @@ jobs:
         cd /mnt/kernel_workspace/common
         patch -p1 < 50_add_susfs_in_gki-android14-6.1.patch
         echo "misc"
-        cp /mnt/kernel_workspace/custom-gki/patches/69_hide_stuff.patch /mnt/kernel_workspace/common/
-        patch -p1 < 69_hide_stuff.patch
         cd /mnt/kernel_workspace
         echo "Adding configuration settings to gki_defconfig..."
         echo "CONFIG_KSU=y" >> /mnt/kernel_workspace/common/arch/arm64/configs/gki_defconfig

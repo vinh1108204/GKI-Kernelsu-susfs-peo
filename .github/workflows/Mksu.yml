@@ -59,7 +59,7 @@ jobs:
         patch -p1 < 10_enable_susfs_for_ksu.patch || true
         patch -p1 < mksu_susfs.patch || true
         cd -
-        echo "ack"
+        echo "apply patch"
         cp /mnt/kernel_workspace/susfs4ksu/kernel_patches/50_add_susfs_in_gki-android14-6.1.patch /mnt/kernel_workspace/common/
         cp /mnt/kernel_workspace/susfs4ksu/kernel_patches/fs/* /mnt/kernel_workspace/common/fs/
         cp /mnt/kernel_workspace/susfs4ksu/kernel_patches/include/linux/* /mnt/kernel_workspace/common/include/linux/
@@ -71,7 +71,7 @@ jobs:
           # Apply additional patch
            cd /mnt/kernel_workspace/common
            cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/69_hide_stuff.patch /mnt/kernel_workspace/common/
-          patch -p1 -F 3 < 69_hide_stuff.patch || true
+           patch -p1 -F 3 < 69_hide_stuff.patch || true
     
         
     - name: Add Configuration Settings
@@ -103,8 +103,8 @@ jobs:
           echo "CONFIG_TMPFS_XATTR=y" >> ./common/arch/arm64/configs/gki_defconfig
 
           # Remove check_defconfig
-          sed -i 's/check_defconfig//' ./common/build.config.gki
-          sed -i '$s|echo "\$res"|echo "\$res-g82925d7cf0cd-bb11468a83"|' ./common/scripts/setlocalversion
+           sed -i 's/check_defconfig//' ./common/build.config.gki
+           sed -i '$s|echo "\$res"|echo "\$res-g82925d7cf0cd-bb11468a83"|' ./common/scripts/setlocalversion
           
     - name: Build Kernel
       run: |
@@ -119,7 +119,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
         git clone https://github.com/TheWildJames/AnyKernel3.git -b android14-6.1
-         cp $GITHUB_WORKSPACE/kernel_workspace/Image.lz4 AnyKernel3/Image.lz4
+        cp $GITHUB_WORKSPACE/kernel_workspace/Image.lz4 AnyKernel3/Image.lz4
         
     - name: Upload Image
       uses: actions/upload-artifact@v4

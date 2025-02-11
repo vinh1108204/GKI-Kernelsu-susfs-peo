@@ -103,7 +103,7 @@ jobs:
           echo "CONFIG_TMPFS_XATTR=y" >> ./common/arch/arm64/configs/gki_defconfig
 
           # Remove check_defconfig
-           sed -i -e 's|\$(preempt-flag-y) "\$(build-timestamp)"|\$(preempt-flag-y) "(Mon Feb 10 04:00:00 UTC 2025)"|' ./common/init/Makefile
+           sed -i -e 's|\$(preempt-flag-y) "\$(build-timestamp)"|\$(preempt-flag-y) "$(Mon Feb 10 04:00:00 UTC 2025)"|' ./common/init/Makefile
            sed -i 's/check_defconfig//' ./common/build.config.gki
            sed -i '$s|echo "\$res"|echo "\$res-g82925d7cf0cd-bb11468a83"|' ./common/scripts/setlocalversion
           

@@ -103,7 +103,7 @@ jobs:
           echo "CONFIG_TMPFS_XATTR=y" >> ./common/arch/arm64/configs/gki_defconfig
           
           # Hardcode Timestamp 
-           sed -i -e 's|\$(preempt-flag-y) "\$(build-timestamp)"|\$(preempt-flag-y) "$(Mon Feb 10 04:00:00 UTC 2025)"|' ./common/init/Makefile
+           perl -pi -e 's{$(preempt-flag-y) "$(build-timestamp)"}{$(preempt-flag-y) "$(Sat Apr 20 04:20:00 UTC 2024)"}' ./common/init/Makefile
           
           # Remove check_defconfig
            sed -i 's/check_defconfig//' ./common/build.config.gki

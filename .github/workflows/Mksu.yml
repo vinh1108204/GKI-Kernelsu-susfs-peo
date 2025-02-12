@@ -114,7 +114,7 @@ jobs:
         cd /mnt/kernel_workspace
           rm -rf ./common/android/abi_gki_protected_exports_*
             sed -i "/stable_scmversion_cmd/s/-maybe-dirty//g" ./build/kernel/kleaf/impl/stamp.bzl
-            tools/bazel build --config=fast //common:kernel_aarch64_dist
+            tools/bazel build --lto=full --stamp//common:kernel_aarch64_dist
             cp ./bazel-bin/common/kernel_aarch64/Image $GITHUB_WORKSPACE/kernel_workspace/
             cp ./bazel-bin/common/kernel_aarch64/Image.lz4 $GITHUB_WORKSPACE/kernel_workspace/
 

@@ -3,8 +3,8 @@
 @@ -521,6 +526,10 @@ static void stop_execve_hook()
 -	ksu_execveat_hook = false;
 -	pr_info("stop execve_hook\n");
-+ bool ret = schedule_work(&stop_execve_hook_work);
-+ pr_info("unregister execve kprobe: %d!\n", ret);
++     bool ret = schedule_work(&stop_execve_hook_work);
++     pr_info("unregister execve kprobe: %d!\n", ret);
  #endif
 +#ifdef CONFIG_KSU_SUSFS_SUS_SU
 +	susfs_is_sus_su_ready = true;

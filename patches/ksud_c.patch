@@ -1,6 +1,6 @@
 --- a/kernel/ksud.c
 +++ b/kernel/ksud.c
-@@ -526,6 +526,10 @@ static void stop_execve_hook()
+@@ -526,6 +526,11 @@ static void stop_execve_hook()
 {
 -	ksu_execveat_hook = false;
 -	pr_info("stop execve_hook\n");

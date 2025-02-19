@@ -6,7 +6,7 @@
 -	pr_info("stop execve_hook\n");
 +       bool ret = schedule_work(&stop_execve_hook_work);
 +       pr_info("unregister execve kprobe: %d!\n", ret);
- #endif
++#endif
 +#ifdef CONFIG_KSU_SUSFS_SUS_SU
 +	susfs_is_sus_su_ready = true;
 +	pr_info("susfs: sus_su is ready\n");

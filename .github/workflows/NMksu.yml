@@ -47,7 +47,7 @@ jobs:
         git clone https://gitlab.com/simonpunk/susfs4ksu.git -b gki-android14-6.1
         cp /mnt/kernel_workspace/susfs4ksu/kernel_patches/KernelSU/10_enable_susfs_for_ksu.patch /mnt/kernel_workspace/KernelSU/
         cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/mksu_susfs.patch ./KernelSU/
-        cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/mksu.fix.patch /mnt/kernel_workspace/KernelSU/
+        cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/mksu.fix.patch ./KernelSU/
         cd KernelSU
         patch -p1 < 10_enable_susfs_for_ksu.patch || true
         patch -p1 < mksu_susfs.patch || true

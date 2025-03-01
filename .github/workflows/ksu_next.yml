@@ -121,7 +121,7 @@ jobs:
     - name: Make Anykernel3
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
-        git clone https://github.com/TheWildJames/AnyKernel3.git -b android14-6.1
+        git clone https://github.com/TheWildJames/AnyKernel3.git -b gki-2.0
         cp $GITHUB_WORKSPACE/kernel_workspace/Image.lz4 AnyKernel3/Image.lz4
         
     - name: Upload Image

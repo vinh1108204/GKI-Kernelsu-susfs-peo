@@ -45,10 +45,10 @@ jobs:
         echo "Applying SUSFS patches..."
            
         git clone https://gitlab.com/simonpunk/susfs4ksu.git -b gki-android14-6.1
-        cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/KernelSU-Next-Implement-SUSFS-v1.5.5-Universal.patch ./KernelSU/
+        cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/KernelSU-Next-Implement-SUSFS-v1.5.5-Universal.patch ./KernelSU-Next/
         #cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/mksu_susfs.patch ./KernelSU/
         #cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/mksu.fix.patch ./KernelSU/
-        cd KernelSU
+        cd KernelSU-Next
         patch -p1 < KernelSU-Next-Implement-SUSFS-v1.5.5-Universal.patch || true
         #patch -p1 < mksu_susfs.patch || true
         #patch -p1 < mksu.fix.patch || true

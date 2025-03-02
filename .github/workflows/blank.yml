@@ -120,7 +120,7 @@ jobs:
     - name: Build Kernel
       run: |
         cd /mnt/kernel_workspace
-           tools/bazel build --config=fast --stamp //common:kernel_aarch64_dist
+           tools/bazel build --config=fast --lto=thin //common:kernel_aarch64_dist
            cp ./bazel-bin/common/kernel_aarch64/Image $GITHUB_WORKSPACE/kernel_workspace/
            cp ./bazel-bin/common/kernel_aarch64/Image.lz4 $GITHUB_WORKSPACE/kernel_workspace/
 

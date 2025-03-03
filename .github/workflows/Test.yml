@@ -65,7 +65,7 @@ jobs:
           # Apply additional patch
            cd /mnt/kernel_workspace
            cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/apk_sign.c_fix.patch ./KernelSU-Next/
-           patch -p1 -F 3 < apk_sign.c_fix.patch
+           patch -p1 < apk_sign.c_fix.patch
     
     - name: Apply Hide Stuff Patches
       run: |

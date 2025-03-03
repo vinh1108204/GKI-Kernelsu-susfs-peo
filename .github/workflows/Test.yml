@@ -63,9 +63,9 @@ jobs:
     - name: Apply New Hooks Patches
       run: |
           # Apply additional patch
-           cd /mnt/kernel_workspace/common
-           cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/new_hooks.patch /mnt/kernel_workspace/common/
-           patch -p1 -F 3 < new_hooks.patch
+           cd /mnt/kernel_workspace
+           cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/apk_sign.c_fix.patch ./KernelSU-Next/
+           patch -p1 -F 3 < apk_sign.c_fix.patch
     
     - name: Apply Hide Stuff Patches
       run: |

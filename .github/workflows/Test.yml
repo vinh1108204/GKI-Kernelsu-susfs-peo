@@ -95,13 +95,19 @@ jobs:
 
           # Add additional tmpfs config setting
           echo "CONFIG_TMPFS_XATTR=y" >> ./common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_TMPFS_POSIX_ACL=y" >> ./common/arch/arm64/configs/gki_defconfig
+
+          # Add additional tmpfs config setting
+          echo "CONFIG_IP_NF_TARGET_TTL=y" >> ./common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_IP6_NF_TARGET_HL=y" >> ./common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_IP6_NF_MATCH_HL=y" >> ./common/arch/arm64/configs/gki_defconfig
           
           # Hardcode Timestamp 
            sed -i -e 's|\$(preempt-flag-y) \"\$(build-timestamp)\"|\$(preempt-flag-y) \"Thu Jul 11 07:05:47 UTC 2024\"|' ./common/init/Makefile
           
           # Remove check_defconfig
            sed -i 's/check_defconfig//' ./common/build.config.gki
-           sed -i '$s|echo "\$res"|echo "\$res-gb6577b760481-ab12075023"|' ./common/scripts/setlocalversion
+           sed -i '$s|echo "\$res"|echo "\$res-Roksu💢💢"|' ./common/scripts/setlocalversion
           
     - name: Build Kernel
       run: |

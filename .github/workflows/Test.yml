@@ -59,13 +59,6 @@ jobs:
         cp /mnt/kernel_workspace/susfs4ksu/kernel_patches/include/linux/* /mnt/kernel_workspace/common/include/linux/
         cd /mnt/kernel_workspace/common
         patch -p1 < 50_add_susfs_in_gki-android14-6.1.patch || true
-
-    - name: Apply New Hooks Patches
-      run: |
-          # Apply additional patch
-           cd /mnt/kernel_workspace
-           cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/apk-sign-fix.patch ./KernelSU-Next/
-           patch -p1 < apk-sign-fix.patch || true
     
     - name: Apply Hide Stuff Patches
       run: |

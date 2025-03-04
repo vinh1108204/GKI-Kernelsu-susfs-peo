@@ -25,7 +25,7 @@ jobs:
       id: cache-toolchain
       uses: actions/cache@v4
       with:
-        path: kernel-build-tools
+        path: node_modules
         key: toolchain-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
           toolchain-${{ runner.os }}-

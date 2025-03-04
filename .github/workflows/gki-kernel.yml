@@ -351,10 +351,6 @@ jobs:
             tools/bazel build --config=fast --lto=${{ inputs.lto_type }} //common:kernel_aarch64_dist
           fi
 
-          # copy image 
-          cp ./$CONFIG/bazel-bin/common/kernel_aarch64/Image $CONFIG/
-          cp ./$CONFIG/bazel-bin/common/kernel_aarch64/Image.lz4 $CONFIG/
-
       - name: Create Bootimgs Folder and Copy Images
         if: ${{ inputs.android_version == 'android14' || inputs.android_version == 'android15' }}
         run: |

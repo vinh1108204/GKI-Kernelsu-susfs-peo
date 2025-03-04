@@ -83,7 +83,7 @@ jobs:
           path: |
             kernel-build-tools
             mkbootimg
-          key: toolchain-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+          key: toolchain-${{ runner.os }}-${{ hashFiles('**/workflow.yml') }}
           restore-keys: |
             toolchain-${{ runner.os }}-
 

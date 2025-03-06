@@ -1,0 +1,20 @@
+--- a/kernel/apk_sign.c	2024-12-31 16:19:51.886744500 -0500
++++ b/kernel/apk_sign.c	2024-12-31 16:25:51.396912664 -0500
+@@ -314,7 +314,15 @@
+ 
+ #endif
+ 
+-bool ksu_is_manager_apk(char *path)
++bool ksu_is_manager_apk(char *path)
+ {
++#ifdef CONFIG_KSU_SUSFS
++	return (check_v2_signature(path, EXPECTED_NEXT_SIZE, EXPECTED_NEXT_HASH) 
++	|| check_v2_signature(path, 0x033b, "c371061b19d8c7d7d6133c6a9bafe198fa944e50c1b31c9d8daa8d7f1fc2d2d6") // stock
++	|| check_v2_signature(path, 0x3e6, "79e590113c4c4c0c222978e413a5faa801666957b1212a328e46c00c69821bf7") // rifsxd
++	|| check_v2_signature(path, 0x0394, "ed880907e50c9fc2870594160b9c2720c917274579ce43c48ff19b92ffa1b81f") // ro3tpq
++	);
++#else
+ 	return check_v2_signature(path, EXPECTED_NEXT_SIZE, EXPECTED_NEXT_HASH);
++#endif
+ }
+\ No newline at end of file

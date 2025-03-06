@@ -141,7 +141,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
         git clone https://github.com/TheWildJames/AnyKernel3.git -b gki-2.0
-        cp $GITHUB_WORKSPACE/kernel_workspace/Image.lz4 AnyKernel3/Image.lz4
+        cp $GITHUB_WORKSPACE/kernel_workspace/Image AnyKernel3/Image
         
     - name: Upload Image
       uses: actions/upload-artifact@v4

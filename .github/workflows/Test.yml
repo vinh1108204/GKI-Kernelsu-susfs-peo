@@ -29,7 +29,7 @@ jobs:
     - name: Download source code
       run: |
         cd /mnt/kernel_workspace
-        repo init --depth=1 --u https://android.googlesource.com/kernel/manifest -b common-android14-6.1-2024-10
+        repo init --depth=1 --u https://android.googlesource.com/kernel/manifest -b common-android14-6.1-lts
         repo --trace sync -c -j$(nproc --all) --no-tags --fail-fast
 
     - name: KernelSU / SUSFS / Misc
@@ -113,20 +113,6 @@ jobs:
           # Remove check_defconfig
            sed -i 's/check_defconfig//' ./common/build.config.gki
            sed -i '$s|echo "\$res"|echo "\$res-Roksu💢💢"|' ./common/scripts/setlocalversion
-
-    - name: Config Kernel Name
-      run: |
-          cd "/mnt/kernel_workspace/common"
-          # Add bbrv3 config setting
-          #cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/tcp_bbr.c ./net/ipv4/
-
-          cd /mnt/kernel_workspace
-          #echo "CONFIG_TCP_CONG_ADVANCED=y" >> ./common/arch/arm64/configs/gki_defconfig 
-          echo "CONFIG_TCP_CONG_BBR=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_NET_SCH_FQ=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_TCP_CONG_BIC=n" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_TCP_CONG_WESTWOOD=n" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_TCP_CONG_HTCP=n" >> ./common/arch/arm64/configs/gki_defconfig 
           
     - name: Build Kernel
       run: |

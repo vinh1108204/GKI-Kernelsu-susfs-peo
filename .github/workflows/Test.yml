@@ -80,7 +80,6 @@ jobs:
           echo "Adding configuration settings to gki_defconfig..."
         
           echo "CONFIG_KSU=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_KSU_WITH_KPROBES=n" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_KSU_SUSFS=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_KSU_SUSFS_HAS_MAGIC_MOUNT=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_KSU_SUSFS_SUS_PATH=y" >> ./common/arch/arm64/configs/gki_defconfig
@@ -96,7 +95,7 @@ jobs:
           echo "CONFIG_KSU_SUSFS_HIDE_KSU_SUSFS_SYMBOLS=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_KSU_SUSFS_SPOOF_CMDLINE_OR_BOOTCONFIG=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_KSU_SUSFS_OPEN_REDIRECT=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_KSU_SUSFS_SUS_SU=n" >> ./common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_KSU_SUSFS_SUS_SU=y" >> ./common/arch/arm64/configs/gki_defconfig
 
           # Add additional tmpfs config setting
           echo "CONFIG_TMPFS_XATTR=y" >> ./common/arch/arm64/configs/gki_defconfig
@@ -112,7 +111,7 @@ jobs:
           
           # Remove check_defconfig
            sed -i 's/check_defconfig//' ./common/build.config.gki
-           sed -i '$s|echo "\$res"|echo "\$res-Roksu💢💢"|' ./common/scripts/setlocalversion
+           sed -i '$s|echo "\$res"|echo "\$res-Roksu🦀🦞🐳"|' ./common/scripts/setlocalversion
 
     - name: Config Kernel Name
       run: |
@@ -123,7 +122,7 @@ jobs:
           cd ..
           echo "CONFIG_TCP_CONG_ADVANCED=y" >> ./common/arch/arm64/configs/gki_defconfig 
           echo "CONFIG_TCP_CONG_BBR=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_TCP_CONG_WESTWOOD=n" >> ./common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_TCP_CONG_WESTWOOD=y" >> ./common/arch/arm64/configs/gki_defconfig
           
     - name: Build Kernel
       run: |

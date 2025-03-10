@@ -103,6 +103,17 @@ jobs:
           # Remove check_defconfig
            sed -i 's/check_defconfig//' ./common/build.config.gki
            sed -i '$s|echo "\$res"|echo "\$res-gb6577b760481-ab12075023"|' ./common/scripts/setlocalversion
+     
+    - name: Config Kernel Name
+      run: |
+          # Add bbrv3 config setting
+           cd /mnt/kernel_workspace/common
+           cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/modules.bzl /mnt/kernel_workspace/common/
+
+          cd ..
+          echo "CONFIG_TCP_CONG_ADVANCED=y" >> ./common/arch/arm64/configs/gki_defconfig 
+          echo "CONFIG_TCP_CONG_BBR=y" >> ./common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_TCP_CONG_WESTWOOD=y" >> ./common/arch/arm64/configs/gki_defconfig
           
     - name: Build Kernel
       run: |

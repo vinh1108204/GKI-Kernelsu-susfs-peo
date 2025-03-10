@@ -59,10 +59,8 @@ jobs:
         cp /mnt/kernel_workspace/susfs4ksu/kernel_patches/50_add_susfs_in_gki-android14-6.1.patch /mnt/kernel_workspace/common/
         cp /mnt/kernel_workspace/susfs4ksu/kernel_patches/fs/* /mnt/kernel_workspace/common/fs/
         cp /mnt/kernel_workspace/susfs4ksu/kernel_patches/include/linux/* /mnt/kernel_workspace/common/include/linux/
-        cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/syscall_hooks.patch /mnt/kernel_workspace/common/
         cd /mnt/kernel_workspace/common
         patch -p1 < 50_add_susfs_in_gki-android14-6.1.patch || true
-        patch -p1 < syscall_hooks.patch || true
 
     - name: Apply Hide Stuff Patches
       run: |
@@ -113,6 +111,17 @@ jobs:
           # Remove check_defconfig
            sed -i 's/check_defconfig//' ./common/build.config.gki
            sed -i '$s|echo "\$res"|echo "\$res-Roksu🦀🦞🐳"|' ./common/scripts/setlocalversion
+
+    - name: Config Kernel Name
+      run: |
+          # Add bbrv3 config setting
+           cd /mnt/kernel_workspace/common
+           cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/modules.bzl /mnt/kernel_workspace/common/
+
+          cd ..
+          echo "CONFIG_TCP_CONG_ADVANCED=y" >> ./common/arch/arm64/configs/gki_defconfig 
+          echo "CONFIG_TCP_CONG_BBR=y" >> ./common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_TCP_CONG_WESTWOOD=y" >> ./common/arch/arm64/configs/gki_defconfig
           
     - name: Build Kernel
       run: |

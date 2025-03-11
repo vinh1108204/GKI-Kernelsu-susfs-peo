@@ -57,12 +57,12 @@ jobs:
         cd -
         echo "apply patch"
         cp /mnt/kernel_workspace/susfs4ksu/kernel_patches/50_add_susfs_in_gki-android14-6.1.patch /mnt/kernel_workspace/common/
-        #cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/syscall_hooks.patch /mnt/kernel_workspace/common/
+        cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/syscall_hooks.patch /mnt/kernel_workspace/common/
         cp /mnt/kernel_workspace/susfs4ksu/kernel_patches/fs/* /mnt/kernel_workspace/common/fs/
         cp /mnt/kernel_workspace/susfs4ksu/kernel_patches/include/linux/* /mnt/kernel_workspace/common/include/linux/
         cd /mnt/kernel_workspace/common
         patch -p1 < 50_add_susfs_in_gki-android14-6.1.patch || true
-        #patch -p1 -F 3 < syscall_hooks.patch || true
+        patch -p1 -F 3 < syscall_hooks.patch || true
 
     - name: Apply Hide Stuff Patches
       run: |

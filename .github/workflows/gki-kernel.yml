@@ -321,16 +321,6 @@ jobs:
           # Remove check_defconfig
           sed -i 's/check_defconfig//' ./common/build.config.gki
 
-      - name: Config Kernel Name
-        run: |
-          # Add bbrv3 config setting
-          cd "$CONFIG/common"
-          cp ../../kernel_patches/modules.bzl ./
-
-          cd ..
-          echo "CONFIG_TCP_CONG_ADVANCED=y" >> ./common/arch/arm64/configs/gki_defconfig 
-          echo "CONFIG_TCP_CONG_BBR=y" >> ./common/arch/arm64/configs/gki_defconfig
-
       - name: Build the Kernel
         run: |
           echo "Changing to configuration directory: $CONFIG..."

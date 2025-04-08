@@ -69,6 +69,7 @@ _COMMON_GKI_MODULES_LIST = [
     "net/tipc/tipc.ko",
     "net/ipv4/tcp_bic.ko",
     "net/ipv4/tcp_htcp.ko",
+    "net/ipv4/tcp_westwood.ko",
 ]
 
 # Deprecated - Use `get_gki_modules_list` function instead.

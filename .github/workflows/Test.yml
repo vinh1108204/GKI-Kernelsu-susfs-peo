@@ -112,7 +112,7 @@ jobs:
           
           # Remove check_defconfig
            sed -i 's/check_defconfig//' ./common/build.config.gki
-           sed -i '$s|echo "\$res"|echo "\$res-g71b43c3e005a-ab10734328"|' ./common/scripts/setlocalversion
+           sed -i '$s|echo "\$res"|echo "\$res-g716498f88d0f-ab11695701"|' ./common/scripts/setlocalversion
            
     - name: Config BBR
       run: |

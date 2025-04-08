@@ -118,7 +118,7 @@ jobs:
       run: |
           # Add bbrv3 config setting
           cd "/mnt/kernel_workspace/common"
-          cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/modules.bzl /mnt/kernel_workspace/common/
+          #cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/modules.bzl /mnt/kernel_workspace/common/
 
           cd ..
           echo "CONFIG_TCP_CONG_ADVANCED=y" >> ./common/arch/arm64/configs/gki_defconfig 

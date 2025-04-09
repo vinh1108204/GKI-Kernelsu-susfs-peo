@@ -1,4 +1,4 @@
-name: Build Kernel-Next with GKI
+name: Build Kernel-SukiSU with GKI
 on:
   workflow_dispatch:
 
@@ -36,7 +36,7 @@ jobs:
       run: |
         cd /mnt/kernel_workspace
         echo "Add KernelSU"
-        curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next/kernel/setup.sh" | bash -
+        curl -LSs "https://raw.githubusercontent.com/ShirkNeko/SukiSU-Ultra/main/kernel/setup.sh" | bash -s main
           
     - name: Apply SUSFS Patches
       run: |
@@ -45,13 +45,13 @@ jobs:
         echo "Applying SUSFS patches..."
            
         git clone https://gitlab.com/simonpunk/susfs4ksu.git -b gki-android14-6.1
-        cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/0001-kernel-patch-susfs-v1.5.5-to-KernelSU-Next-v1.0.5.patch ./KernelSU-Next/
-        cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/apk_sign.c_fix.patch ./KernelSU-Next/
+        cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/0001-kernel-patch-susfs-v1.5.5-to-KernelSU-Next-v1.0.5.patch ./KernelSU/
+        cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/apk_sign.c_fix.patch ./KernelSU/
         #cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/mksu_susfs.patch ./KernelSU/
         #cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/mksu.fix.patch ./KernelSU/
         cd KernelSU-Next
         patch -p1 < 0001-kernel-patch-susfs-v1.5.5-to-KernelSU-Next-v1.0.5.patch || true
-        patch -p1 < apk_sign.c_fix.patch || true
+        #patch -p1 < apk_sign.c_fix.patch || true
         #patch -p1 < mksu_susfs.patch || true
         #patch -p1 < mksu.fix.patch || true
         cd -
@@ -80,6 +80,8 @@ jobs:
           echo "Adding configuration settings to gki_defconfig..."
         
           echo "CONFIG_KSU=y" >> ./common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_KPM=y" >> ./common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_KSU_MANUAL_HOOK=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_KSU_WITH_KPROBES=n" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_KSU_SUSFS=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_KSU_SUSFS_HAS_MAGIC_MOUNT=y" >> ./common/arch/arm64/configs/gki_defconfig

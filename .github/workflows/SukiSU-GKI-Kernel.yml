@@ -49,7 +49,7 @@ jobs:
         cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/apk_sign.c_fix.patch ./KernelSU/
         #cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/mksu_susfs.patch ./KernelSU/
         #cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/mksu.fix.patch ./KernelSU/
-        cd KernelSU-Next
+        cd KernelSU
         patch -p1 < 0001-kernel-patch-susfs-v1.5.5-to-KernelSU-Next-v1.0.5.patch || true
         #patch -p1 < apk_sign.c_fix.patch || true
         #patch -p1 < mksu_susfs.patch || true

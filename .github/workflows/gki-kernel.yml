@@ -326,14 +326,14 @@ jobs:
           echo "Changing to configuration directory: $CONFIG..."
           cd "$CONFIG"
 
-          sed -i '$s|echo "\$res"|echo "\$res-g71b43c3e005a-ab10734328"|' ./common/scripts/setlocalversion
+          sed -i '$s|echo "\$res"|echo "\$res-g716498f88d0f-ab11695701"|' ./common/scripts/setlocalversion
 
           # Run perl command to modify UTS_VERSION
           perl -pi -e 's{UTS_VERSION="\$\(echo \$UTS_VERSION \$CONFIG_FLAGS \$TIMESTAMP \| cut -b -\$UTS_LEN\)"}{UTS_VERSION="#1 SMP PREEMPT Wed Apr 10 08:51:29 UTC 2024"}' ./common/scripts/mkcompile_h
 
           echo "Building the kernel..."
           if [ -f "build/build.sh" ]; then
-            sed -i 's/-g71b43c3e005a-ab10734328//' ./common/scripts/setlocalversion
+            sed -i 's/-g716498f88d0f-ab11695701//' ./common/scripts/setlocalversion
             LTO=${{ inputs.lto_type }} BUILD_CONFIG=common/build.config.gki.aarch64 build/build.sh
           else
             rm -rf ./common/android/abi_gki_protected_exports_*

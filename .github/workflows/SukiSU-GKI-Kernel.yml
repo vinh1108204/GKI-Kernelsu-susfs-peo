@@ -36,7 +36,7 @@ jobs:
       run: |
         cd /mnt/kernel_workspace
         echo "Add KernelSU"
-        curl -LSs "https://raw.githubusercontent.com/ShirkNeko/SukiSU-Ultra/main/kernel/setup.sh" | bash -s main
+        curl -LSs "https://raw.githubusercontent.com/ShirkNeko/SukiSU-Ultra/main/kernel/setup.sh" | bash -s susfs-dev
           
     - name: Apply SUSFS Patches
       run: |
@@ -45,12 +45,12 @@ jobs:
         echo "Applying SUSFS patches..."
            
         git clone https://gitlab.com/simonpunk/susfs4ksu.git -b gki-android14-6.1
-        cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/0001-kernel-patch-susfs-v1.5.5-to-KernelSU-Next-v1.0.5.patch ./KernelSU/
-        cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/apk_sign.c_fix.patch ./KernelSU/
+        #cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/0001-kernel-patch-susfs-v1.5.5-to-KernelSU-Next-v1.0.5.patch ./KernelSU/
+        #cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/apk_sign.c_fix.patch ./KernelSU/
         #cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/mksu_susfs.patch ./KernelSU/
         #cp /mnt/kernel_workspace/GKI-Kernelsu-susfs/patches/mksu.fix.patch ./KernelSU/
         cd KernelSU
-        patch -p1 < 0001-kernel-patch-susfs-v1.5.5-to-KernelSU-Next-v1.0.5.patch || true
+        #patch -p1 < 0001-kernel-patch-susfs-v1.5.5-to-KernelSU-Next-v1.0.5.patch || true
         #patch -p1 < apk_sign.c_fix.patch || true
         #patch -p1 < mksu_susfs.patch || true
         #patch -p1 < mksu.fix.patch || true

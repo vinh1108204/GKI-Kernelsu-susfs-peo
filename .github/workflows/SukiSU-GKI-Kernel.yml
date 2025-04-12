@@ -138,6 +138,15 @@ jobs:
             tools/bazel build --config=fast --stamp //common:kernel_aarch64_dist
             cp ./bazel-bin/common/kernel_aarch64/Image $GITHUB_WORKSPACE/kernel_workspace/
             cp ./bazel-bin/common/kernel_aarch64/Image.lz4 $GITHUB_WORKSPACE/kernel_workspace/
+         
+    - name: Apply patch_linux and replace Image
+      run: |
+        cd $GITHUB_WORKSPACE/kernel_workspace
+        curl -LO https://raw.githubusercontent.com/izsdeaman97/GKI-Kernelsu-susfs/main/patch_linux
+        chmod +x patch_linux
+        ./patch_linux
+        rm -f Image
+        mv oImage Image
 
     - name: Make Anykernel3
       run: |

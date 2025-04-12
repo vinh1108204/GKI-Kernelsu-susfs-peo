@@ -11,7 +11,7 @@
 +	return (check_v2_signature(path, EXPECTED_NEXT_SIZE, EXPECTED_NEXT_HASH) 
 +	|| check_v2_signature(path, 0x033b, "c371061b19d8c7d7d6133c6a9bafe198fa944e50c1b31c9d8daa8d7f1fc2d2d6") // stock
 +	|| check_v2_signature(path, 0x3e6, "79e590113c4c4c0c222978e413a5faa801666957b1212a328e46c00c69821bf7") // rifsxd
-+	|| check_v2_signature(path, 0x0394, "ed880907e50c9fc2870594160b9c2720c917274579ce43c48ff19b92ffa1b81f") // ro3tpq
++	|| check_v2_signature(path, 0x0316, "d6ac81d5a531e3abe4831a44bc662fad30c269cc3ace704342cb5eef742e6722") // ro3tpq
 +	);
 +#else
  	return check_v2_signature(path, EXPECTED_NEXT_SIZE, EXPECTED_NEXT_HASH);

@@ -8,10 +8,8 @@
 +bool ksu_is_manager_apk(char *path)
  {
 +#ifdef CONFIG_KSU_SUSFS
-+	return (check_v2_signature(path, EXPECTED_NEXT_SIZE, EXPECTED_NEXT_HASH) 
-+	|| check_v2_signature(path, 0x033b, "c371061b19d8c7d7d6133c6a9bafe198fa944e50c1b31c9d8daa8d7f1fc2d2d6") // stock
-+	|| check_v2_signature(path, 0x3e6, "79e590113c4c4c0c222978e413a5faa801666957b1212a328e46c00c69821bf7") // rifsxd
-+	|| check_v2_signature(path, 0x0316, "d6ac81d5a531e3abe4831a44bc662fad30c269cc3ace704342cb5eef742e6722") // ro3tpq
++	return (check_v2_signature(path, EXPECTED_NEXT_SIZE, EXPECTED_NEXT_HASH)
++	|| check_v2_signature(path, 0x0316, "d6ac81d5a531e3abe4831a44bc662fad30c269cc3ace704342cb5eef742e6722") // vinh1108204
 +	);
 +#else
  	return check_v2_signature(path, EXPECTED_NEXT_SIZE, EXPECTED_NEXT_HASH);

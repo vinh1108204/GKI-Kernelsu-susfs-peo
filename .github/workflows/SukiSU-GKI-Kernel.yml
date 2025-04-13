@@ -29,7 +29,7 @@ jobs:
     - name: Download source code
       run: |
         cd /mnt/kernel_workspace
-        repo init --depth=1 --u https://android.googlesource.com/kernel/manifest -b common-android14-6.1-20252025-02
+        repo init --depth=1 --u https://android.googlesource.com/kernel/manifest -b common-android14-6.1-2025-02
         repo --trace sync -c -j$(nproc --all) --no-tags --fail-fast
 
     - name: KernelSU / SUSFS / Misc
@@ -114,7 +114,7 @@ jobs:
           
           # Remove check_defconfig
            sed -i 's/check_defconfig//' ./common/build.config.gki
-           sed -i '$s|echo "\$res"|echo "\$res-Tea-Signature👅💦"|' ./common/scripts/setlocalversion
+           sed -i '$s|echo "\$res"|echo "\$res-Tea-Signature"|' ./common/scripts/setlocalversion
            
     - name: Config BBR
       run: |
